@@ -78,7 +78,15 @@ Used cursor autocompletion to finish some Tasks quicker while writing the code.
 Used cursor to adapt similar structures: 
 getNotesService -> UpdateNoteServce
 ScreenNotesListScreen -> ArchivedNotes
+Commit  Message by Cursor + Edited by me. 
 
-4. 
+4. WordCount
+Overall logic, GraphQL schema etc. created by me, created through the AWS Website, the code logic created by Cursor. 
+
+Commit Message by Cursor
+
+
+
+
 
 

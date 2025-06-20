@@ -12,9 +12,15 @@ import { Auth } from "aws-amplify";
 import { getNotesService } from "./src/services/getNotesService";
 import { NotesAction, NotesState } from "./src/types";
 import { Note } from "./src/API";
+import { useFonts } from "expo-font";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const [fontsLoaded] = useFonts({
+    ...Ionicons.font,
+  });
 
   const notesReducer = (state: NotesState, action: NotesAction) => {
     switch (action.type) {
@@ -75,6 +81,10 @@ export default function App() {
     };
     getNotes();
   }, [isLoggedIn]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <AppContext.Provider value={appStore}>

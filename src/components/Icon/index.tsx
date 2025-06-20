@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons'
 import React, { FC } from 'react'
-import { ltuBlue } from '../../../constants/Colors'
+import { ltuBlue } from '../../constants/colors'
 import { IconProps } from './icon.types'
 
 export const LtuIcon: FC<IconProps> = ({

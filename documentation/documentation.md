@@ -62,3 +62,8 @@ Asked  Cursor for documentation  of expo headerRight option
 Implemented it with LTU Icons. 
 Asked cursor for explanation about Ionicons, bisher immer mit FontAwesome gearbeitet. 
 -> Best practice von der Ionicon documnetation zusammenfassen lassen. 
+-> commit message von cursor verfasst
+
+Cursor CreateNotes
+CreateNotesScreen Grundstruktur durch Cursor
+

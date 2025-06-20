@@ -35,6 +35,8 @@ export default function App() {
         return { ...state, loading: true, error: false };
       case "FETCH_NOTES_ERROR":
         return { ...state, loading: false, error: true };
+      case "ADD_NOTE":
+        return { ...state, notes: [action.payload, ...state.notes] };
       case "ADD_NOTE_FROM_SUBSCRIPTION":
         return { ...state, notes: [...state.notes, action.payload] };
       default:
@@ -52,6 +54,7 @@ export default function App() {
     isLoggedIn,
     setIsLoggedIn,
     fetchedNotes,
+    dispatch,
   };
 
   // Check if user is authenticated on app load

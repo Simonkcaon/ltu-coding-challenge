@@ -14,6 +14,7 @@ import AppContext from "../context/AppContext";
 import ReanimatedSwipeable from "react-native-gesture-handler/ReanimatedSwipeable";
 import { updateNoteService } from "../services/updateNoteService";
 import { Note } from "../API";
+import { CreateNoteHintAnimation } from "../components/CreateNoteHintAnimation";
 
 const WordCountIndicator = ({
   count,
@@ -102,7 +103,7 @@ export function NotesListScreen() {
           />
         ) : (
           <View style={styles.emptyContainer}>
-            <LtuText>No notes found</LtuText>
+            <CreateNoteHintAnimation />
           </View>
         )}
       </View>

@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NotesStack } from "./NotesStack";
 import { Ionicons } from "@expo/vector-icons";
 import { ArchiveStack } from "./ArchiveStack";
-import { ltuBlue, ltuRed, ltuRose } from "../constants/colors";
+import { ltuBlue, ltuBlueLight, ltuRed, ltuWhite } from "../constants/colors";
 import { LogoutScreen } from "../views/LogoutScreen";
 
 const Tab = createBottomTabNavigator();
@@ -12,16 +12,16 @@ const Tab = createBottomTabNavigator();
 export const TabsNavigator = () => {
   return (
     <Tab.Navigator
-      id="Notes"
       initialRouteName="Notizen"
       screenOptions={({ route }) => ({
-        tabBarActiveTintColor: ltuBlue,
-        tabBarInactiveTintColor: "gray",
+        tabBarActiveTintColor: ltuWhite,
+        tabBarInactiveTintColor: ltuBlueLight,
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: ltuRose,
+          backgroundColor: ltuBlue,
           borderTopWidth: 0,
-          height: 60,
+          height: 80,
+          paddingBottom: 10,
         },
       })}
     >

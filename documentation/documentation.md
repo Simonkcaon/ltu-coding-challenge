@@ -4,6 +4,7 @@ Anfang ca. 2:05
 Nutzung: Cursor
 
 1. 
+
 Fehleranalyse: 
 
 React Native Dev Tools, Network untersucht, keine Probleme festgestellt. 
@@ -60,13 +61,15 @@ ltu-coding-challenge/
 Asked  Cursor for documentation  of expo headerRight option
 Implemented it with LTU Icons. 
 Asked cursor for explanation about Ionicons, bisher immer mit FontAwesome gearbeitet. 
--> Best practice von der Ionicon documnetation zusammenfassen lassen. 
--> commit message von cursor verfasst
+-> Best practice von der Ionicon documentation zusammenfassen lassen. 
+-> Commit message von cursor verfasst
 
 Cursor CreateNotes
 CreateNotesScreen Grundstruktur durch Cursor
 
 End of 2. Commit Message von Cursor 
+
+---------------------------------
 
 3. Archive 
 
@@ -80,10 +83,15 @@ getNotesService -> UpdateNoteServce
 ScreenNotesListScreen -> ArchivedNotes
 Commit  Message by Cursor + Edited by me. 
 
+---------------
+
 4. WordCount
 Overall logic, GraphQL schema etc. created by me, created through the AWS Website, the code logic created by Cursor. 
 
 Commit Message by Cursor
+
+5. UI verschönerung bis 6:05
+Dann dokumentation fertig machen, letzten Commit mit 
 
 
 

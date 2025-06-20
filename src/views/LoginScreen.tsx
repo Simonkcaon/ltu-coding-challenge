@@ -56,12 +56,12 @@ export const LoginScreen = ({ onLoginSuccess }: LoginScreenProps) => {
         autoCapitalize="none"
       />
       <View>
-        <LtuInput
-          placeholder="Passwort"
-          value={password}
-          onChangeText={setPassword}
+      <LtuInput
+        placeholder="Passwort"
+        value={password}
+        onChangeText={setPassword}
           secureTextEntry={!isPasswordVisible}
-        />
+      />
         <TouchableOpacity
           style={styles.eyeIcon}
           onPress={() => setIsPasswordVisible(!isPasswordVisible)}

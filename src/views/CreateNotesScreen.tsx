@@ -45,19 +45,19 @@ export function CreateNotesScreen() {
   return (
     <View style={styles.container}>
       <LtuInput
-        placeholder="Note Title"
+        placeholder="Title"
         value={title}
         onChangeText={setTitle}
       />
       <LtuInput
-        placeholder="Note Content"
+        placeholder="Inhalt"
         value={content}
         onChangeText={setContent}
         multiline
         style={styles.contentInput}
       />
       <LtuButton onPress={handleSave} isLoading={isLoading} disabled={isLoading}>
-        Save Note
+        Speichern
       </LtuButton>
     </View>
   );

@@ -4,6 +4,9 @@ import {
   StyleSheet,
   FlatList,
   TouchableOpacity,
+  Animated,
+  Image,
+  Text,
 } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import { ltuBlue, ltuRoseShade } from "../constants/colors";
@@ -16,6 +19,8 @@ import ReanimatedSwipeable from "react-native-gesture-handler/ReanimatedSwipeabl
 import { updateNoteService } from "../services/updateNoteService";
 import AppContext from "../context/AppContext";
 import { useIsFocused } from "@react-navigation/native";
+import { ArchiveHintAnimation } from "../components/ArchiveHintAnimation";
+import { LtuHeadline } from "../components/typography/Headline";
 
 const WordCountIndicator = ({
   count,
@@ -136,7 +141,16 @@ export function ArchivedNotesScreen() {
           />
         ) : (
           <View style={styles.emptyContainer}>
-            <LtuText>No archived notes found</LtuText>
+            <Image
+              source={require("../../assets/sad-archive.png")}
+              style={[styles.emptyIcon, { tintColor: "gray" }]}
+            />
+            <Text style={styles.emptyTitle}>Dein Archiv ist leer</Text>
+            <Text style={styles.emptySubtitle}>
+              Wische auf einer Notiz von rechts nach links, um sie hierher zu
+              archivieren.
+            </Text>
+            <ArchiveHintAnimation />
           </View>
         )}
       </View>
@@ -147,6 +161,7 @@ export function ArchivedNotesScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#fff",
   },
   innerContainer: {
     flex: 1,
@@ -162,6 +177,26 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    paddingHorizontal: 40,
+  },
+  emptyIcon: {
+    width: 120,
+    height: 120,
+    marginBottom: 30,
+  },
+  emptyTitle: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: "#333",
+    textAlign: "center",
+    marginBottom: 15,
+  },
+  emptySubtitle: {
+    fontSize: 16,
+    color: "#666",
+    textAlign: "center",
+    lineHeight: 22,
+    marginBottom: 40,
   },
   rightAction: {
     backgroundColor: ltuBlue,

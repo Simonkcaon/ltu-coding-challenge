@@ -2,8 +2,8 @@ import Amplify from "aws-amplify";
 import awsconfig from "./src/aws-exports";
 Amplify.configure(awsconfig);
 import React, { JSX, useEffect, useReducer, useState } from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
-import { ltuRose } from "./src/constants/colors";
+import { StyleSheet } from "react-native";
+import { ltuBlue, ltuRose } from "./src/constants/colors";
 import { LoginScreen } from "./src/views/LoginScreen";
 import { UserAuthenticated } from "./src/views/UserAuthenticated";
 import AppContext from "./src/context/AppContext";
@@ -15,6 +15,7 @@ import { Note } from "./src/API";
 import { useFonts } from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -98,7 +99,7 @@ export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
     <AppContext.Provider value={appStore}>
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={styles.container} edges={['bottom']}>
         {isLoggedIn ? (
           <UserAuthenticated />
         ) : (
@@ -115,6 +116,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: ltuRose,
+    backgroundColor: ltuBlue,
   },
 });

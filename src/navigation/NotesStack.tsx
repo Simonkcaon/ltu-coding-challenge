@@ -30,7 +30,7 @@ export const NotesStack = () => {
             <TouchableOpacity
               onPress={() => navigation.navigate("Create Note")}
               style={{ padding: 4 }}
-              accessibilityLabel="Create a new note"
+              accessibilityLabel="Eine neue Notiz erstellen"
             >
               <LtuIcon name="add-circle-outline" size={32} color={"#000000"} />
             </TouchableOpacity>
@@ -41,7 +41,7 @@ export const NotesStack = () => {
         name="Create Note"
         component={CreateNotesScreen}
         options={{
-          title: "Create a new Note",
+          title: "Eine neue Notiz erstellen",
         }}
       />
     </Stack.Navigator>

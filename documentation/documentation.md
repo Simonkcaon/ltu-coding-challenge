@@ -1,7 +1,7 @@
 
 
 Anfang ca. 2:05
-Nutzung: Cursor
+Nutzung: Cursor mit Gemini-2.5-pro
 
 1. 
 
@@ -90,8 +90,13 @@ Overall logic, GraphQL schema etc. created by me, created through the AWS Websit
 
 Commit Message by Cursor
 
-5. UI verschönerung bis 6:05
-Dann dokumentation fertig machen, letzten Commit mit 
+5. 
+Logo Erstellung mit Chatgpt + Photoshop
+UI verschönerung bis 6:05 zusammen mit Cursor, 
+Animationen hinzugefügt, 
+Dann dokumentation fertig machen, letzten Commit mit Cursor. 
+Readme gegenchecken.  
+
 
 
 

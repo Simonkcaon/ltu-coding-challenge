@@ -8,6 +8,5 @@ export const getNotesService = async (): Promise<
 > => {
   return (await API.graphql({
     query: listNotes,
-    authMode: "API_KEY" as any,
   })) as GraphQLResult<ListNotesQuery>;
 };

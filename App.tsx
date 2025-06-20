@@ -59,11 +59,19 @@ export default function App() {
   useEffect(() => {
     //if (!isLoggedIn) return;
     const getNotes = async () => {
-      const response = await getNotesService();
-      dispatch({
-        type: "FETCH_NOTES_SUCCESS",
-        payload: response.data.listNotes.items as Note[],
-      });
+      try {
+        dispatch({ type: "FETCH_NOTES_LOADING" });
+        const response = await getNotesService();
+        if (response?.data?.listNotes?.items) {
+          dispatch({
+            type: "FETCH_NOTES_SUCCESS",
+            payload: response.data.listNotes.items as Note[],
+          });
+        }
+      } catch (error) {
+        dispatch({ type: "FETCH_NOTES_ERROR" });
+        console.error("Error fetching notes:", error);
+      }
     };
     getNotes();
   }, [isLoggedIn]);

@@ -8,6 +8,7 @@ type Note
   id: ID!
   title: String!
   content: String
+  archived: Boolean
   createdAt: AWSDateTime
   updatedAt: AWSDateTime
 }

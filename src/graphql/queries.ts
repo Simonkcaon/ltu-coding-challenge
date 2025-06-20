@@ -13,6 +13,7 @@ export const getNote = /* GraphQL */ `query GetNote($id: ID!) {
     id
     title
     content
+    archived
     createdAt
     updatedAt
     owner
@@ -30,6 +31,7 @@ export const listNotes = /* GraphQL */ `query ListNotes(
       id
       title
       content
+      archived
       createdAt
       updatedAt
       owner

@@ -4,7 +4,6 @@ Anfang ca. 2:05
 Nutzung: Cursor
 
 1. 
-
 Fehleranalyse: 
 
 React Native Dev Tools, Network untersucht, keine Probleme festgestellt. 
@@ -18,7 +17,7 @@ Found API_Key authMode issue, we dont use API_Key so removed it.
 
 Cursor gefragt den Case zu handeln wenn keine Notes vorhanden sind (was momentan so ist)
 
-
+----------------------------------
 2.
 
 Cursor nach projektstruktur gefragt: 
@@ -66,4 +65,20 @@ Asked cursor for explanation about Ionicons, bisher immer mit FontAwesome gearbe
 
 Cursor CreateNotes
 CreateNotesScreen Grundstruktur durch Cursor
+
+End of 2. Commit Message von Cursor 
+
+3. Archive 
+
+Created all the files manually,
+Gave a rough implemenation of the animation and then let cursor handle the bugs "depreceated swipeable" 
+
+Used cursor autocompletion to finish some Tasks quicker while writing the code. 
+
+Used cursor to adapt similar structures: 
+getNotesService -> UpdateNoteServce
+ScreenNotesListScreen -> ArchivedNotes
+
+4. 
+
 

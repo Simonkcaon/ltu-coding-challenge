@@ -5,15 +5,17 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ltuBlue, ltuRoseShade } from "../constants/colors";
 import { LtuSpinner } from "../components/Spinner";
+import { getNotesService } from "../services/getNotesService";
+import { Note } from "../API";
 import { LtuText } from "../components/typography/Text";
 import { LtuCard } from "../components/Card";
-import AppContext from "../context/AppContext";
 import ReanimatedSwipeable from "react-native-gesture-handler/ReanimatedSwipeable";
 import { updateNoteService } from "../services/updateNoteService";
-import { Note } from "../API";
+import AppContext from "../context/AppContext";
+import { useIsFocused } from "@react-navigation/native";
 
 const RightActions = ({
   onPress,
@@ -25,26 +27,58 @@ const RightActions = ({
   return (
     <TouchableOpacity onPress={() => onPress(noteId)}>
       <View style={styles.rightAction}>
-        <LtuText style={styles.actionText}>Archive</LtuText>
+        <LtuText style={styles.actionText}>Undo</LtuText>
       </View>
     </TouchableOpacity>
   );
 };
 
-export function NotesListScreen() {
-  const { fetchedNotes, dispatch } = useContext(AppContext);
-  const { notes, loading } = fetchedNotes;
+export function ArchivedNotesScreen() {
+  const [notes, setNotes] = useState<(Note | null)[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const { dispatch } = useContext(AppContext);
+  const isFocused = useIsFocused();
 
-  const handleArchive = async (noteId: string) => {
+  const handleUnarchive = async (noteId: string) => {
     try {
-      await updateNoteService({ id: noteId, archived: true });
-      dispatch({ type: "ARCHIVE_NOTE", payload: noteId });
+      const response: any = await updateNoteService({
+        id: noteId,
+        archived: false,
+      });
+      // Add note back to the global state for the main list
+      if (response.data.updateNote) {
+        dispatch({ type: "ADD_NOTE", payload: response.data.updateNote });
+      }
+      // Remove from local state
+      setNotes((prevNotes) => prevNotes.filter((note) => note?.id !== noteId));
     } catch (error) {
-      console.error("Failed to archive note:", error);
+      console.error("Failed to un-archive note:", error);
     }
   };
 
-  if (loading) {
+  useEffect(() => {
+    const getNotes = async () => {
+      // Set loading to true only on the initial fetch or when focusing an empty list
+      if (notes.length === 0) {
+        setIsLoading(true);
+      }
+      try {
+        const result = await getNotesService(true);
+        if (result?.data?.listNotes?.items) {
+          setNotes(result.data.listNotes.items as Note[]);
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    if (isFocused) {
+      getNotes();
+    }
+  }, [isFocused]);
+
+  if (isLoading) {
     return (
       <View style={styles.innerContainer}>
         <LtuSpinner />
@@ -62,7 +96,7 @@ export function NotesListScreen() {
               <ReanimatedSwipeable
                 renderRightActions={() => (
                   <RightActions
-                    onPress={handleArchive}
+                    onPress={handleUnarchive}
                     noteId={item?.id ?? ""}
                   />
                 )}
@@ -84,7 +118,7 @@ export function NotesListScreen() {
           />
         ) : (
           <View style={styles.emptyContainer}>
-            <LtuText>No notes found</LtuText>
+            <LtuText>No archived notes found</LtuText>
           </View>
         )}
       </View>
@@ -125,4 +159,4 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     padding: 20,
   },
-});
+}); 

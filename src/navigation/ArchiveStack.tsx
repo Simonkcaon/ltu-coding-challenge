@@ -1,15 +1,14 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { NotesListScreen } from "../views/NotesListScreen";
 import { ltuBlue, ltuRose } from "../constants/colors";
+import { ArchivedNotesScreen } from "../views/ArchivedNotesScreen";
 
 const Stack = createNativeStackNavigator();
 
 export const ArchiveStack = () => {
   return (
     <Stack.Navigator
-      id="ArchiveStack"
-      initialRouteName="Archivierte Notizen"
+      initialRouteName="Archived Notes List"
       screenOptions={{
         headerStyle: {
           backgroundColor: ltuRose,
@@ -20,7 +19,11 @@ export const ArchiveStack = () => {
         },
       }}
     >
-      <Stack.Screen name="Archivierte Notizen" component={NotesListScreen} />
+      <Stack.Screen
+        name="Archived Notes List"
+        component={ArchivedNotesScreen}
+        options={{ title: "Archivierte Notizen" }}
+      />
     </Stack.Navigator>
   );
 };

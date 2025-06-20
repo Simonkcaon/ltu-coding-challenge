@@ -16,6 +16,7 @@ export const onCreateNote = /* GraphQL */ `subscription OnCreateNote(
     id
     title
     content
+    archived
     createdAt
     updatedAt
     owner
@@ -34,6 +35,7 @@ export const onUpdateNote = /* GraphQL */ `subscription OnUpdateNote(
     id
     title
     content
+    archived
     createdAt
     updatedAt
     owner
@@ -52,6 +54,7 @@ export const onDeleteNote = /* GraphQL */ `subscription OnDeleteNote(
     id
     title
     content
+    archived
     createdAt
     updatedAt
     owner

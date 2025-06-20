@@ -14,6 +14,7 @@ import { NotesAction, NotesState } from "./src/types";
 import { Note } from "./src/API";
 import { useFonts } from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -37,6 +38,11 @@ export default function App() {
         return { ...state, loading: false, error: true };
       case "ADD_NOTE":
         return { ...state, notes: [action.payload, ...state.notes] };
+      case "ARCHIVE_NOTE":
+        return {
+          ...state,
+          notes: state.notes.filter((note) => note.id !== action.payload),
+        };
       case "ADD_NOTE_FROM_SUBSCRIPTION":
         return { ...state, notes: [...state.notes, action.payload] };
       default:
@@ -70,7 +76,7 @@ export default function App() {
     const getNotes = async () => {
       try {
         dispatch({ type: "FETCH_NOTES_LOADING" });
-        const response = await getNotesService();
+        const response = await getNotesService(false);
         if (response?.data?.listNotes?.items) {
           dispatch({
             type: "FETCH_NOTES_SUCCESS",
@@ -90,17 +96,19 @@ export default function App() {
   }
 
   return (
-    <AppContext.Provider value={appStore}>
-      <SafeAreaView style={styles.container}>
-        {isLoggedIn ? (
-          <UserAuthenticated />
-        ) : (
-          ((
-            <LoginScreen onLoginSuccess={() => setIsLoggedIn(true)} />
-          ) as JSX.Element)
-        )}
-      </SafeAreaView>
-    </AppContext.Provider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <AppContext.Provider value={appStore}>
+        <SafeAreaView style={styles.container}>
+          {isLoggedIn ? (
+            <UserAuthenticated />
+          ) : (
+            ((
+              <LoginScreen onLoginSuccess={() => setIsLoggedIn(true)} />
+            ) as JSX.Element)
+          )}
+        </SafeAreaView>
+      </AppContext.Provider>
+    </GestureHandlerRootView>
   );
 }
 

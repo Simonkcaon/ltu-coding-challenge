@@ -14,6 +14,7 @@ export const getNote = /* GraphQL */ `query GetNote($id: ID!) {
     title
     content
     archived
+    wordCount
     createdAt
     updatedAt
     owner
@@ -32,6 +33,7 @@ export const listNotes = /* GraphQL */ `query ListNotes(
       title
       content
       archived
+      wordCount
       createdAt
       updatedAt
       owner

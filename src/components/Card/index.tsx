@@ -7,7 +7,15 @@ export const LtuCard: FC<CardProps> = ({
   children,
   style,
   xsBorder = false,
+  topRightIndicator,
 }) => {
   const styles = CardStyles({ xsBorder })
-  return <View style={[styles.card, style]}>{children}</View>
+  return <View style={[styles.card, style]}>
+    {topRightIndicator && (
+      <View style={styles.topRightIndicatorContainer}>
+        {topRightIndicator}
+      </View>
+    )}
+    {children}
+  </View>
 }

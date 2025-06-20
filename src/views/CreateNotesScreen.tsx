@@ -1,4 +1,4 @@
-import { View, StyleSheet, TextInput, Button } from "react-native";
+import { View, StyleSheet } from "react-native";
 import React, { useContext, useState } from "react";
 import { ltuRoseShade } from "../constants/colors";
 import { LtuInput } from "../components/Input";

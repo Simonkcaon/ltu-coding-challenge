@@ -78,10 +78,10 @@ export default function App() {
         dispatch({ type: "FETCH_NOTES_LOADING" });
         const response = await getNotesService(false);
         if (response?.data?.listNotes?.items) {
-          dispatch({
-            type: "FETCH_NOTES_SUCCESS",
-            payload: response.data.listNotes.items as Note[],
-          });
+      dispatch({
+        type: "FETCH_NOTES_SUCCESS",
+        payload: response.data.listNotes.items as Note[],
+      });
         }
       } catch (error) {
         dispatch({ type: "FETCH_NOTES_ERROR" });
@@ -97,17 +97,17 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <AppContext.Provider value={appStore}>
-        <SafeAreaView style={styles.container}>
-          {isLoggedIn ? (
-            <UserAuthenticated />
-          ) : (
-            ((
-              <LoginScreen onLoginSuccess={() => setIsLoggedIn(true)} />
-            ) as JSX.Element)
-          )}
-        </SafeAreaView>
-      </AppContext.Provider>
+    <AppContext.Provider value={appStore}>
+      <SafeAreaView style={styles.container}>
+        {isLoggedIn ? (
+          <UserAuthenticated />
+        ) : (
+          ((
+            <LoginScreen onLoginSuccess={() => setIsLoggedIn(true)} />
+          ) as JSX.Element)
+        )}
+      </SafeAreaView>
+    </AppContext.Provider>
     </GestureHandlerRootView>
   );
 }

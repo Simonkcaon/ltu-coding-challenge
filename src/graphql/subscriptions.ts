@@ -17,6 +17,7 @@ export const onCreateNote = /* GraphQL */ `subscription OnCreateNote(
     title
     content
     archived
+    wordCount
     createdAt
     updatedAt
     owner
@@ -36,6 +37,7 @@ export const onUpdateNote = /* GraphQL */ `subscription OnUpdateNote(
     title
     content
     archived
+    wordCount
     createdAt
     updatedAt
     owner
@@ -55,6 +57,7 @@ export const onDeleteNote = /* GraphQL */ `subscription OnDeleteNote(
     title
     content
     archived
+    wordCount
     createdAt
     updatedAt
     owner

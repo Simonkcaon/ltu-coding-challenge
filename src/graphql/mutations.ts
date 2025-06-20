@@ -17,6 +17,7 @@ export const createNote = /* GraphQL */ `mutation CreateNote(
     title
     content
     archived
+    wordCount
     createdAt
     updatedAt
     owner
@@ -36,6 +37,7 @@ export const updateNote = /* GraphQL */ `mutation UpdateNote(
     title
     content
     archived
+    wordCount
     createdAt
     updatedAt
     owner
@@ -55,6 +57,7 @@ export const deleteNote = /* GraphQL */ `mutation DeleteNote(
     title
     content
     archived
+    wordCount
     createdAt
     updatedAt
     owner

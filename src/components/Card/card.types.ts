@@ -1,8 +1,9 @@
-import { ReactNode } from 'react'
-import { ViewStyle } from 'react-native'
+import { FC, ReactNode } from 'react'
+import { StyleProp, ViewStyle } from 'react-native'
 
 export interface CardProps {
   children: ReactNode
   xsBorder?: boolean
-  style?: ViewStyle
+  style?: StyleProp<ViewStyle>
+  topRightIndicator?: ReactNode
 }

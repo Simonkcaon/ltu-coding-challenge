@@ -7,6 +7,7 @@ export type CreateNoteInput = {
   title: string,
   content?: string | null,
   archived?: boolean | null,
+  wordCount?: number | null,
   createdAt?: string | null,
   updatedAt?: string | null,
 };
@@ -15,6 +16,7 @@ export type ModelNoteConditionInput = {
   title?: ModelStringInput | null,
   content?: ModelStringInput | null,
   archived?: ModelBooleanInput | null,
+  wordCount?: ModelIntInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
   and?: Array< ModelNoteConditionInput | null > | null,
@@ -70,12 +72,25 @@ export type ModelBooleanInput = {
   attributeType?: ModelAttributeTypes | null,
 };
 
+export type ModelIntInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
 export type Note = {
   __typename: "Note",
   id: string,
   title: string,
   content?: string | null,
   archived?: boolean | null,
+  wordCount?: number | null,
   createdAt?: string | null,
   updatedAt?: string | null,
   owner?: string | null,
@@ -86,6 +101,7 @@ export type UpdateNoteInput = {
   title?: string | null,
   content?: string | null,
   archived?: boolean | null,
+  wordCount?: number | null,
   createdAt?: string | null,
   updatedAt?: string | null,
 };
@@ -99,6 +115,7 @@ export type ModelNoteFilterInput = {
   title?: ModelStringInput | null,
   content?: ModelStringInput | null,
   archived?: ModelBooleanInput | null,
+  wordCount?: ModelIntInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
   and?: Array< ModelNoteFilterInput | null > | null,
@@ -134,6 +151,7 @@ export type ModelSubscriptionNoteFilterInput = {
   title?: ModelSubscriptionStringInput | null,
   content?: ModelSubscriptionStringInput | null,
   archived?: ModelSubscriptionBooleanInput | null,
+  wordCount?: ModelSubscriptionIntInput | null,
   createdAt?: ModelSubscriptionStringInput | null,
   updatedAt?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionNoteFilterInput | null > | null,
@@ -176,6 +194,18 @@ export type ModelSubscriptionBooleanInput = {
   eq?: boolean | null,
 };
 
+export type ModelSubscriptionIntInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  in?: Array< number | null > | null,
+  notIn?: Array< number | null > | null,
+};
+
 export type CreateNoteMutationVariables = {
   input: CreateNoteInput,
   condition?: ModelNoteConditionInput | null,
@@ -188,6 +218,7 @@ export type CreateNoteMutation = {
     title: string,
     content?: string | null,
     archived?: boolean | null,
+    wordCount?: number | null,
     createdAt?: string | null,
     updatedAt?: string | null,
     owner?: string | null,
@@ -206,6 +237,7 @@ export type UpdateNoteMutation = {
     title: string,
     content?: string | null,
     archived?: boolean | null,
+    wordCount?: number | null,
     createdAt?: string | null,
     updatedAt?: string | null,
     owner?: string | null,
@@ -224,6 +256,7 @@ export type DeleteNoteMutation = {
     title: string,
     content?: string | null,
     archived?: boolean | null,
+    wordCount?: number | null,
     createdAt?: string | null,
     updatedAt?: string | null,
     owner?: string | null,
@@ -241,6 +274,7 @@ export type GetNoteQuery = {
     title: string,
     content?: string | null,
     archived?: boolean | null,
+    wordCount?: number | null,
     createdAt?: string | null,
     updatedAt?: string | null,
     owner?: string | null,
@@ -262,6 +296,7 @@ export type ListNotesQuery = {
       title: string,
       content?: string | null,
       archived?: boolean | null,
+      wordCount?: number | null,
       createdAt?: string | null,
       updatedAt?: string | null,
       owner?: string | null,
@@ -282,6 +317,7 @@ export type OnCreateNoteSubscription = {
     title: string,
     content?: string | null,
     archived?: boolean | null,
+    wordCount?: number | null,
     createdAt?: string | null,
     updatedAt?: string | null,
     owner?: string | null,
@@ -300,6 +336,7 @@ export type OnUpdateNoteSubscription = {
     title: string,
     content?: string | null,
     archived?: boolean | null,
+    wordCount?: number | null,
     createdAt?: string | null,
     updatedAt?: string | null,
     owner?: string | null,
@@ -318,6 +355,7 @@ export type OnDeleteNoteSubscription = {
     title: string,
     content?: string | null,
     archived?: boolean | null,
+    wordCount?: number | null,
     createdAt?: string | null,
     updatedAt?: string | null,
     owner?: string | null,

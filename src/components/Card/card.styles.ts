@@ -12,4 +12,10 @@ export const CardStyles = ({ xsBorder }: CardStylesProps) =>
       padding: 17,
       backgroundColor: ltuRose,
     },
+    topRightIndicatorContainer: {
+      position: "absolute",
+      top: 10,
+      right: 15,
+      zIndex: 1,
+    },
   })

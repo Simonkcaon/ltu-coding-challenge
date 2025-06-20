@@ -15,6 +15,22 @@ import ReanimatedSwipeable from "react-native-gesture-handler/ReanimatedSwipeabl
 import { updateNoteService } from "../services/updateNoteService";
 import { Note } from "../API";
 
+const WordCountIndicator = ({
+  count,
+}: {
+  count: number | null | undefined;
+}) => {
+  if (count === null || count === undefined) {
+    return null;
+  }
+  const label = count === 1 ? "Wort" : "Wörter";
+  return (
+    <LtuText size="xs" style={{ color: "gray" }}>
+      {count} {label}
+    </LtuText>
+  );
+};
+
 const RightActions = ({
   onPress,
   noteId,
@@ -67,7 +83,9 @@ export function NotesListScreen() {
                   />
                 )}
               >
-                <LtuCard>
+                <LtuCard
+                  topRightIndicator={<WordCountIndicator count={item?.wordCount} />}
+                >
                   <LtuText size="lg" bold>
                     {item?.title}
                   </LtuText>

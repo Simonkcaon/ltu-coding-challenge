@@ -9,6 +9,7 @@ type Note
   title: String!
   content: String
   archived: Boolean
+  wordCount: Int
   createdAt: AWSDateTime
   updatedAt: AWSDateTime
 }

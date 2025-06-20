@@ -14,7 +14,10 @@ export const LtuText: FC<LtuTextProps> = ({
     style={[
       TextStyles.text,
       style,
-      size === 'xs' && { fontSize: 14 },
+      size === 'xs' && { fontSize: 12 },
+      size === 'sm' && { fontSize: 14 },
+      size === 'md' && { fontSize: 16 },
+      size === 'lg' && { fontSize: 18 },
       bold && { fontWeight: 'bold', fontFamily: 'PrimaryFont-700' },
       textCenter && { textAlign: 'center' },
     ]}

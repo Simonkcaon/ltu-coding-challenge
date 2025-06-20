@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 
 export interface LtuTextProps extends TextProps {
   children: ReactNode
-  size?: 'xs'
+  size?: 'xs' | 'sm' | 'md' | 'lg'
   bold?: boolean
   textCenter?: boolean
 }

@@ -26,13 +26,23 @@ export function NotesListScreen() {
             data={notes}
             renderItem={({ item }) => (
               <LtuCard>
-                <LtuText>{item?.title}</LtuText>
+                <LtuText size="lg" bold>
+                  {item?.title}
+                </LtuText>
+                {item?.content ? (
+                  <LtuText size="sm" numberOfLines={1} ellipsizeMode="tail">
+                    {item.content}
+                  </LtuText>
+                ) : null}
               </LtuCard>
             )}
             keyExtractor={(item) => item?.id ?? ""}
+            contentContainerStyle={styles.listContentContainer}
           />
         ) : (
-          <LtuText>No notes found</LtuText>
+          <View style={styles.emptyContainer}>
+            <LtuText>No notes found</LtuText>
+          </View>
         )}
       </View>
     </SafeAreaView>
@@ -46,7 +56,31 @@ const styles = StyleSheet.create({
   innerContainer: {
     flex: 1,
     backgroundColor: ltuRoseShade,
+    paddingHorizontal: 16,
+    paddingTop: 16,
+  },
+  listContentContainer: {
+    paddingBottom: 20,
+    gap: 20,
+    shadowOffset: {
+      width: 1,
+      height: 3,
+    },
+    shadowOpacity: 0.09,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  emptyContainer: {
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  
+  content: {
+    fontSize: 14,
   },
 });

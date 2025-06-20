@@ -66,7 +66,7 @@ export default function App() {
 
   // Fetch notes when user is logged in
   useEffect(() => {
-    //if (!isLoggedIn) return;
+    if (!isLoggedIn) return;
     const getNotes = async () => {
       try {
         dispatch({ type: "FETCH_NOTES_LOADING" });
